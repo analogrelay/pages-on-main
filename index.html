@@ -12,6 +12,19 @@
         <div class="pagehead">
             <h1>Pages on Main</h1>
         </div>
+        <p>
+            GitHub Pages only supports `master` and `gh-pages` right now. Until it supports other branches, 
+            if you want to change your default branch to something other than `master` you can use the workflow
+            defined in [this repository](https://github.com/anurse/pages-on-main) to mirror commits in your default
+            branch to `gh-pages`. You can also filter to only pull a particular doc out
+        </p>
+        <p>
+            Steps:
+        </p>
+        <ol>
+            <li>Create a `gh-pages` branch if there isn't one already and push it to GitHub.</li>
+            <li>Commit the `.github/workflows/copy-pages.yml` file from this repo to your `main` branch</li>
+        </ol>
     </div>
 </body>
 
