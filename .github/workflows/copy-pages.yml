@@ -27,6 +27,8 @@ jobs:
       # Delete the old content
 
       # Copy the content
+      # This will wipe out files in target that don't exist in source (except the .git directory)
+      # So make sure the source is intended to be a complete mirror of the target.
       # You can adjust `./source/...` to be a subdirectory too, such as `./source/_site` or `./source/docs`
       - name: Copy docs
         run: rsync -av --exclude='.git' --delete ./source/ ./target/
