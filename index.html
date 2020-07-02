@@ -2,30 +2,24 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://unpkg.com/@primer/css@14.4.0/dist/primer.css"
-        integrity="sha384-kg6kqLSMDJ5J+CT9WEUpmYm7cYZE8aSAHeL1HbhV0D6c0vK5T/II3aY7KluUWZZ5" crossorigin="anonymous" />
     <title>Pages on Main</title>
 </head>
 
 <body>
-    <div class="container-lg">
-        <div class="pagehead">
-            <h1>Pages on Main</h1>
-        </div>
-        <p>
-            GitHub Pages only supports `master` and `gh-pages` right now. Until it supports other branches, 
-            if you want to change your default branch to something other than `master` you can use the workflow
-            defined in [this repository](https://github.com/anurse/pages-on-main) to mirror commits in your default
-            branch to `gh-pages`. You can also filter to only pull a particular doc out
-        </p>
-        <p>
-            Steps:
-        </p>
-        <ol>
-            <li>Create a `gh-pages` branch if there isn't one already and push it to GitHub.</li>
-            <li>Commit the `.github/workflows/copy-pages.yml` file from this repo to your `main` branch</li>
-        </ol>
-    </div>
+    <h1>Pages on Main</h1>
+    <p>
+        GitHub Pages only supports `master` and `gh-pages` right now. Until it supports other branches,
+        if you want to change your default branch to something other than `master` you can use the workflow
+        defined in [this repository](https://github.com/anurse/pages-on-main) to mirror commits in your default
+        branch to `gh-pages`. You can also filter to only pull a particular doc out
+    </p>
+    <p>
+        Steps:
+    </p>
+    <ol>
+        <li>Create a `gh-pages` branch if there isn't one already and push it to GitHub.</li>
+        <li>Commit the `.github/workflows/copy-pages.yml` file from this repo to your `main` branch</li>
+    </ol>
 </body>
 
 </html>
