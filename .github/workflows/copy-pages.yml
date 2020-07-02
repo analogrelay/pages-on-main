@@ -30,5 +30,15 @@ jobs:
       - name: Copy docs
         run: rsync -av --exclude='.git' --delete ./source/ ./target/
 
-      - name: List target
-        run: ls -la ./target
+      - name: Commit to target
+        working-directory: ./target
+        run: |
+          set -exo pipefail
+          git add -A
+          if git diff HEAD --exit-code; then
+            # Commit will fail if there's nothing to commit!
+            echo "No changes to commit!"
+          else
+            git commit -m"Synchronized docs from $GITHUB_SHA on $GITHUB_REF" --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
+          fi
