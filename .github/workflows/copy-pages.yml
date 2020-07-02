@@ -24,9 +24,7 @@ jobs:
 
       # Optional: Run any static-site building you need here!
 
-      # Delete the old content
-
-      # Copy the content
+      # Sync the content
       # This will wipe out files in target that don't exist in source (except the .git directory)
       # So make sure the source is intended to be a complete mirror of the target.
       # You can adjust `./source/...` to be a subdirectory too, such as `./source/_site` or `./source/docs`
