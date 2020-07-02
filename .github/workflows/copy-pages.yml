@@ -24,9 +24,11 @@ jobs:
 
       # Optional: Run any static-site building you need here!
 
+      # Delete the old content
+
       # Copy the content (feel free to adjust the source directory!)
       - name: Copy docs
-        run: rsync -av --exclude='./source/.git' ./source/ ./target/
+        run: rsync -av --exclude='.git' --delete ./source/ ./target/
 
       - name: List target
-        run: ls -l ./target
+        run: ls -la ./target
