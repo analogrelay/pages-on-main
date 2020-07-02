@@ -1,0 +1,32 @@
+name: Copy Pages
+on:
+  push:
+    branches:
+      # Replace with whatever your source branch is!
+      - main
+jobs:
+  copy:
+    name: Copy Pages
+    runs-on: ubuntu-latest
+    steps:
+      # Check out the code that was just commited to './source'
+      - name: Checkout source
+        uses: actions/checkout@v2
+        with:
+          path: source
+
+      # Check out the 'gh-pages' branch
+      - name: Checkout gh-pages
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: target
+
+      # Optional: Run any static-site building you need here!
+
+      # Copy the content (feel free to adjust the source directory!)
+      - name: Copy docs
+        run: rsync -av --exclude='./source/.git' ./source/ ./target/
+
+      - name: List target
+        run: ls -l ./target
