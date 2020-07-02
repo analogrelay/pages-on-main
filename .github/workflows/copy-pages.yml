@@ -24,9 +24,22 @@ jobs:
 
       # Optional: Run any static-site building you need here!
 
+      # Delete the old content
+
       # Copy the content (feel free to adjust the source directory!)
       - name: Copy docs
-        run: rsync -av --exclude='./source/.git' ./source/ ./target/
+        run: rsync -av --exclude='.git' --delete ./source/ ./target/
 
-      - name: List target
-        run: ls -l ./target
+      - name: Commit to target
+        working-directory: ./target
+        run: |
+          set -exo pipefail
+          git add -A
+          if git diff HEAD --exit-code; then
+            echo "No changes to commit!"
+          else
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m"Synchronized docs from $GITHUB_SHA on $GITHUB_REF"
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
+          fi
